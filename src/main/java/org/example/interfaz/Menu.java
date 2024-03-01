@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 public class Menu extends JFrame {
     public ControladorAlumno controladorAlumno = new ControladorAlumno();
     private JPanel panelPrincipal;
-    private JTable tableAlumnos;
+    public JTable tableAlumnos;
     private JButton anyadirButton;
     private JButton listarButton;
     private JButton modificarButton;
@@ -89,7 +89,11 @@ public class Menu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (idText.getText().isEmpty()){
                     JOptionPane.showMessageDialog(null,"NO HAY ALUMNO SELECCIONADO");
-                }else {
+                } else if (!edadText.getText().matches("\\d+") || !tlfText.getText().matches("\\d{9}")) {
+                    JOptionPane.showMessageDialog(null, "EDAD/TLF NO PUEDE CONTENER CARACTERES QUE \n NO SEAN NÚMEROS ENTEROS O EL TELÉFONO DEBE TENER 9 DÍGITOS");
+                } else if (!nombreText.getText().matches("[a-zA-Z]+")) {
+                    JOptionPane.showMessageDialog(null, "NOMBRE NO PUEDE CONTENER NUMEROS O CARACTERES ESPECIALES");
+                } else {
                     Alumno alumnoModificar = new Alumno(Long.parseLong(idText.getText()), nombreText.getText(), cursoText.getText(), dniText.getText(), tlfText.getText(), Integer.parseInt(edadText.getText()));
                     controladorAlumno.modificar(alumnoModificar.getId(), alumnoModificar);
 
