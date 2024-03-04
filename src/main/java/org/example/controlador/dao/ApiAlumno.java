@@ -10,7 +10,7 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 public class ApiAlumno {
-    public static String urlAPI = "http://localhost:9000/";
+    public static String urlAPI = "http://quieromititulo.com:9000/";
 //    public static String urlAPI = "http://172.23.64.1:9000/";
 
     public List<Alumno> obtenerTodosAlumnos() {
