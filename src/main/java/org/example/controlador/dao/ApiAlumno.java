@@ -13,8 +13,10 @@ public class ApiAlumno {
     public static String urlAPI = "http://quieromititulo.com:9000/";
 //    public static String urlAPI = "http://172.23.64.1:9000/";
 
+
     public List<Alumno> obtenerTodosAlumnos() {
         String url = urlAPI + "api/alumnos";
+        System.out.println(url);
         OkHttpClient cliente = new OkHttpClient();
         Request request = new Request.Builder().url(url).build();
         try (Response response = cliente.newCall(request).execute()) {
